@@ -1,0 +1,12 @@
+from keras_vggface.vggface import VGGFace
+from keras_vggface.utils import preprocess_input
+import numpy as np
+
+# Load the model for face recognition
+model = VGGFace(model='"C:\Users\trini\Downloads\resnet50.py"')
+
+# Preprocess faces and get embeddings
+face_img = cv2.resize(face, (224, 224))
+face_img = np.expand_dims(face_img, axis=0)
+face_img = preprocess_input(face_img, version=2)
+embeddings = model.predict(face_img)
